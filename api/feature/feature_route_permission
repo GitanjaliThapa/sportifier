@@ -1,0 +1,22 @@
+const { methods, permissions, roles } = require("../../utils/enums")
+const {   getFeatureById, updateFeatureById, deleteFeatureById, getFeatures, createNewFeature } = require("./feature_controller")
+
+const featureRoutePermission = {
+    "/": {
+        [methods.Get]: { permissions: [permissions.Find], mw: getFeatures, roles: [roles.Admin, roles.User] },
+        [methods.Post]: { permissions: [permissions.Create], mw: createNewFeature, roles: [roles.User] }
+    },
+
+    "/:id": {
+        [methods.Get]: { permissions: [permissions.FindOne], mw: getFeatureById, roles: [roles.Admin, roles.User] },
+        [methods.Put]: { permissions: [permissions.Update], mw: updateFeatureById, roles: [roles.Admin] },
+        [methods.Delete]: { permissions: [permissions.Delete], mw: deleteFeatureById, roles: [roles.Admin,roles.User] }
+    }
+}
+const featureRouteRoles = {
+    [roles.Admin]:[permissions.Find,permissions.FindOne,permissions.Update,permissions.Delete],
+    [roles.Public]:[permissions.Find],
+    [roles.User]:[permissions.Find,permissions.FindOne,permissions.Delete]
+}
+
+module.exports = { featureRoutePermission,featureRouteRoles }
