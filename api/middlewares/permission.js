@@ -22,8 +22,8 @@ const granted= permission(featurePermissions,role,permissions)
         return res.status(403).json({message:"you don't have enough permission"})
 
     }
-    console.log(req.user);
-    console.log(req.method,req.baseUrl,req.path,req.params)
+    // console.log(req.user);
+    // console.log(req.method,req.baseUrl,req.path,req.params)
     next()
 
 
@@ -40,7 +40,7 @@ function permission(featurePermissions,role,permissions){
         }
     })
    // const granted = featurePermissions.some(data=>data.role === role && permissions.some(item => data.permissions.includes(item)))
-console.log(granted)
+// console.log(granted)
    return granted
 }
 

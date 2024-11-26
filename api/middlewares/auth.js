@@ -16,7 +16,7 @@ async function auth(req,res,next){
     const decodedToken = jwt.verify(token,process.env.JWT_SECRET)
     if (decodedToken) { //token is verified
        const user = await findUserById(decodedToken.id) // 
-       console.log (decodedToken,user)
+      //  console.log (decodedToken,user)
     //    decodedToken.role = user.role
        req.user = decodedToken
        req.user.role = user.role

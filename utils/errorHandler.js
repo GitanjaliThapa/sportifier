@@ -26,7 +26,7 @@ function handleError(err,req,res,next){
             throw err
     }
     catch(e){//catch and log unexpected errors
-        console.log(e)
+        // console.log(e)
         return res.status(500).json({message:e.message})
 
     }

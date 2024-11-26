@@ -2,7 +2,7 @@ const { roles } = require("../../utils/enums");
 const { find, createUser, findUserById, updateUser, deleteUser } = require("./user_service");
 
 async function findUsers(req, res, next) {
-    console.log(req.user)
+    // console.log(req.user)
     const users = await find()//
     return res.status(200).json(users)
 
@@ -10,14 +10,14 @@ async function findUsers(req, res, next) {
 async function changeRole(req, res, next) {
     const userRole = req.user.role
     if (userRole !== roles.Admin)
-        return res.status(403).json({message:"not enough permission"})
-    const {role} = req.body
-    if(!role)
-        return res.status(400).json({message:"Role is required"})
+        return res.status(403).json({ message: "not enough permission" })
+    const { role } = req.body
+    if (!role)
+        return res.status(400).json({ message: "Role is required" })
     if (!Object.values(roles).includes(role))///
-        return res.status(400).json({message:"Invalid role"})
+        return res.status(400).json({ message: "Invalid role" })
 
-    const updatedUser = await updateUser(req.params.id, {role});
+    const updatedUser = await updateUser(req.params.id, { role });
     if (updatedUser) {
         return res.status(200).json(updatedUser);
     }
@@ -43,7 +43,7 @@ async function createNewUser(req, res, next) {
 // Get a single user by ID
 async function getUserById(req, res, next) {
     try {
-        console.log(req.params)
+        // console.log(req.params)
         const user = await findUserById(req.params.id);
         if (user) {
             return res.status(200).json(user);
@@ -86,4 +86,11 @@ async function deleteUserById(req, res, next) {
 }
 
 
-module.exports = { changeRole,findUsers, createNewUser, getUserById, updateUserById, deleteUserById }
+module.exports = {
+    changeRole: changeRole,
+    findUsers: findUsers,
+    createNewUser: createNewUser,
+    getUserById: getUserById,
+    updateUserById: updateUserById,
+    deleteUserById: deleteUserById
+}

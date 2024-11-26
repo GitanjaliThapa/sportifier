@@ -22,7 +22,7 @@ async function getFeatureById(req, res, next) {
     } catch (err) {
         next(err);
     }
-}   
+}
 
 // Create a new feature
 async function createNewFeature(req, res, next) {
@@ -40,7 +40,7 @@ async function createNewFeature(req, res, next) {
 // Update a feature by ID
 async function updateFeatureById(req, res, next) {
     try {
-       
+
         const updatedFeature = await updateFeature(req.params.id, req.body)
         //console.log(updatedFeature)
         if (updatedFeature) {
@@ -66,4 +66,11 @@ async function deleteFeatureById(req, res, next) {
     }
 }
 
-module.exports = { getFeatures, getFeatureById, createNewFeature, updateFeatureById, deleteFeatureById };
+
+module.exports = {
+    getFeatures: getFeatures,
+    getFeatureById: getFeatureById,
+    createNewFeature: createNewFeature,
+    updateFeatureById: updateFeatureById,
+    deleteFeatureById: deleteFeatureById
+}

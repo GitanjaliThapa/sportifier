@@ -28,7 +28,7 @@ async function loginUser({ email, password }) {
 }
 
 async function comparePwd(user,password){
-    console.log(user.password)
+
     if (user && await bcrypt.compare(password, user.password)) {
         const token = await generateToken(user)
         return {...user._doc,token}
@@ -42,7 +42,7 @@ async function signUpUser(data) {
     try {
         const {email,password,name,phone,gender,} = data  
         const existingUser = await user_service.findOne({ email })
-        console.log(existingUser)
+        // console.log(existingUser)
         if (existingUser) {
             const error = new Error("User already exists")
             error.code = 11000
