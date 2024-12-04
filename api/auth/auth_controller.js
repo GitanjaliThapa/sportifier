@@ -1,3 +1,4 @@
+const { sendMail } = require("../../utils/email");
 const {loginUser,signUpUser,forgotPasswordbyUser,resetPasswordbyUser, generateAndSaveVerificationCode} = require("./auth_service")
 
 
@@ -40,6 +41,7 @@ async function forgotPassword(req, res, next) {
 
         // Optionally, log the code or respond
         console.log(`Generated verification code: ${code}`)
+        sendMail({to:email,subject:"password Reset Code",body:"Your Code to reset password is " + code})
 
         return res.status(200).json({code,message: `Your verification code will expire in 5 minutes.`,
             expiresAt });

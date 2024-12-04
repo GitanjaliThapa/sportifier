@@ -1,6 +1,6 @@
 
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDU5ZjYzNzQ0MzE4OTYyNjI5YWI3MCIsImVtYWlsIjoic2FuaW1zaHJlc3RoYS42MEBnbWFpbC5jb20iLCJyb2xlIjoiVXNlciIsImlhdCI6MTczMjYxNjEyNywiZXhwIjoxNzMyNzAyNTI3fQ.nw7OuR-yAcSQrfXlC9Lk0bu12JwH0b85IX2gdjO7LGo
-@baseUrl = http://localhost:4000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjUwNjJjODc4YThhNWFiZGExNDE1YiIsImVtYWlsIjoiZ2lnaUBjLmNvbSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTczMjYwMjUwOSwiZXhwIjoxNzMyNjg4OTA5fQ.IE4ENO8MN5KN7TFgPFvTjuXB_z9sg1N88KVWbYwTUEo
+@baseUrl = http://localhost:3000
 @users = users
 @auth = auth
 @feature = feature
@@ -8,20 +8,18 @@ GET  {{baseUrl}}/{{users}}
 content-type: application/json
 x-access-token: {{token}}
 
-
 ###
+
 POST {{baseUrl}}/{{auth}}/login
 content-type: application/json
 
 {
-   "email":"sanimshrestha.60@gmail.com",
-   "password":"test",
-   "name":"Sanim",
-   "phone":"9808405273",
-   "gender":"Male"
+   "email":"gigi@c.com",
+   "password":"gigi123"
 }
 
 ###
+
 //for Auth Feature
 PUT {{baseUrl}}/{{feature}}/6731ca496a893cec2aeecdb5 
 content-type: application/json
@@ -46,8 +44,7 @@ x-access-token: {{token}}
      {
       "role": "Public",
       "permissions": [
-        "Read",
-        "Create"
+        "Read"
   
       ]
     }

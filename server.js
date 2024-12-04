@@ -6,7 +6,7 @@ const http = require("http")
 const auth = require("./api/middlewares/auth")
 const {loadRoutes,clearRoutes,watchFeatures} = require("./routes")
 
-loadRoutes
+// loadRoutes
 
 const app = express()
 const server = http.createServer(app)
